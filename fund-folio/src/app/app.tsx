@@ -1,9 +1,14 @@
-import NxWelcome from './nx-welcome';
+import React from 'react';
+import Footer from './footer/Footer';
+import Header from './header/Header';
+import { AppContent } from './app-content/AppContent';
 
 export function App() {
   return (
-    <div>
-      <NxWelcome title="fund-folio" />
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <AppContent />
+      <Footer />
     </div>
   );
 }
