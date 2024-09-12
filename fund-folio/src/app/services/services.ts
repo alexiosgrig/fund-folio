@@ -3,7 +3,6 @@ import axios from 'axios';
 export const api = axios.create({
   baseURL: 'https://finnhub.io/api',
 });
-const token = 'crgua1pr01qrbc715520crgua1pr01qrbc71552g';
 
 interface FinancialDataAsReportedPayload {
   symbol?: string;
