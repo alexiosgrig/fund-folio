@@ -1,8 +1,7 @@
 import { BarChart } from '@mui/x-charts';
 import React, { useCallback, useEffect, useState } from 'react';
-import { getRecommendationsData } from '../services/services';
+import { getRecommendationsData } from '../../services/services';
 
-// Define the type for your recommendation data
 interface IRecommendationMapData {
   data: number[];
   stack: string;
@@ -13,8 +12,7 @@ interface ChartsProps {
   symbol: string;
 }
 
-export const Charts: React.FC<ChartsProps> = ({ symbol }) => {
-  // Initialize state for series with the appropriate type
+export const ChartsShared: React.FC<ChartsProps> = ({ symbol }) => {
   const [series, setSeries] = useState<IRecommendationMapData[] | undefined>(
     undefined
   );
@@ -23,17 +21,31 @@ export const Charts: React.FC<ChartsProps> = ({ symbol }) => {
     try {
       const response = await getRecommendationsData({ symbol });
       if (response && response.length > 0) {
+        const strongBuyData = [];
+        const buyData = [];
+        const holdData = [];
+        const sellData = [];
+        const strongSell = [];
+
+        for (const data of response) {
+          strongBuyData.push(data.strongBuy);
+          buyData.push(data.buy);
+          holdData.push(data.hold);
+          sellData.push(data.sell);
+          strongSell.push(data.strongSell);
+        }
+
         const newRecommendationsArray: IRecommendationMapData[] = [
           {
-            data: [response[0]?.strongBuy ?? 0],
+            data: strongBuyData,
             stack: '1',
             label: 'Strong Buy',
           },
-          { data: [response[0]?.buy ?? 0], stack: '2', label: 'Buy' },
-          { data: [response[0]?.hold ?? 0], stack: '3', label: 'Hold' },
-          { data: [response[0]?.sell ?? 0], stack: '4', label: 'Sell' },
+          { data: buyData, stack: '2', label: 'Buy' },
+          { data: holdData, stack: '3', label: 'Hold' },
+          { data: sellData, stack: '4', label: 'Sell' },
           {
-            data: [response[0]?.strongSell ?? 0],
+            data: strongSell,
             stack: '5',
             label: 'Strong Sell',
           },
