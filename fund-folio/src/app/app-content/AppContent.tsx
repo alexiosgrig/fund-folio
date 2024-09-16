@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { TableShared } from '../shared-elements/table/TableShared';
 import { InputField } from '../shared-elements/input-field/InputField';
-import { DatePickerShared } from '../date-picker/DatePicker';
-import { Charts } from '../charts/Charts';
+import { DatePickerShared } from '../shared-elements/date-picker/DatePicker';
 import { FinancialDataAsReportedResponse } from '../services/IFinancialData';
 import { getFinancialAsReportedData } from '../services/services';
+import { ChartsShared } from '../shared-elements/charts/ChartsShared';
 
 export const AppContent = () => {
   const [financialData, setFinancialData] = useState([
@@ -44,7 +44,7 @@ export const AppContent = () => {
           tableHeader={'Free Cash Flow'}
         />
       </div>
-      <Charts symbol={symbol}/>
+      <ChartsShared symbol={symbol} />
     </main>
   );
 };
