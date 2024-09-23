@@ -11,14 +11,20 @@
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
-    "@mui/material": "^6.1.0",
+    "@hookform/resolvers": "^3.9.0",
+    "@mui/icons-material": "^6.1.1",
+    "@mui/material": "^6.1.1",
     "@mui/x-charts": "^7.16.0",
     "@mui/x-date-pickers": "^7.16.0",
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.5",
+    "i18next": "^23.15.1",
     "react": "18.3.1",
     "react-charts": "^0.0.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "react-hook-form": "^7.53.0",
+    "react-i18next": "^15.0.2",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@nx/cypress": "19.7.2",
