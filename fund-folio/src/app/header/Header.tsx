@@ -1,39 +1,65 @@
+import React, { useState } from 'react';
 import {
   AppBar,
-  Box,
   Button,
-  IconButton,
+  Menu,
+  MenuItem,
   Toolbar,
   Typography,
 } from '@mui/material';
-import React, { useState } from 'react';
-import { DrawerShared } from '../shared-elements/drawer/DrawerShared';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
-  const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
+  const [openMenu, setOpenMenu] = useState(false);
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (event) => {
+    const lng = event.target.title;
+    handleMenu();
+    i18n.changeLanguage(lng);
+  };
+
+  const handleMenu = () => {
+    setOpenMenu((prevState) => !prevState);
   };
   return (
-    <>
-      <DrawerShared open={open} toggleDrawer={toggleDrawer} />
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="error"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            onClick={toggleDrawer(true)}
-          ></IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </>
+    <AppBar>
+      <Toolbar>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          {t('news')}
+        </Typography>
+        <Button color="inherit" onClick={handleMenu}>
+          {t('language')}
+        </Button>
+        <Menu
+          open={openMenu}
+          onClose={handleMenu}
+          id="menu-appbar"
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          keepMounted
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+        >
+          <MenuItem onClick={changeLanguage} title="en">
+            {t('english')}
+          </MenuItem>
+          <MenuItem onClick={changeLanguage} title="gr">
+            {t('greek')}
+          </MenuItem>
+          <MenuItem onClick={changeLanguage} title="de">
+            {t('german')}
+          </MenuItem>
+          <MenuItem onClick={changeLanguage} title="sp">
+            {t('spanish')}
+          </MenuItem>
+        </Menu>
+      </Toolbar>
+    </AppBar>
   );
 };
 
