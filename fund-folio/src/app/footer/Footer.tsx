@@ -1,43 +1,36 @@
 import React from 'react';
+import {
+  BottomNavigation,
+  BottomNavigationAction,
+  Paper,
+} from '@mui/material';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
 
 const Footer = () => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+
   return (
-    <footer className="bg-gray-800 text-white py-6">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <h2 className="text-xl font-bold">InvestWise</h2>
-            <p className="text-gray-400 mt-2">
-              © {new Date().getFullYear()} InvestWise. All rights reserved.
-            </p>
-          </div>
-          <nav>
-            <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6">
-              <li>
-                <a href="#" className="hover:text-gray-400">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-gray-400">
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-gray-400">
-                  Support
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-gray-400">
-                  About Us
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </footer>
+    <Paper
+      sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
+      elevation={3}
+    >
+      <BottomNavigation showLabels>
+        <BottomNavigationAction
+          label={t('dashboard')}
+          icon={<DashboardIcon />}
+          onClick={() => navigate('/')}
+        />
+        <BottomNavigationAction
+          label={t('news')}
+          icon={<NewspaperIcon />}
+          onClick={() => navigate('/stock-news')}
+        />
+      </BottomNavigation>
+    </Paper>
   );
 };
 
