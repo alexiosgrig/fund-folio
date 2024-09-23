@@ -1,22 +1,22 @@
 export const gr = {
   translation: {
-    enterStock: 'Εισαγωγή Αποθέματος',
+    enterStock: 'Εισαγωγή Συμβόλου Μετοχής',
     search: 'Αναζήτηση',
     recommendation: 'Σύσταση',
     stockAnalysis: 'Ανάλυση Μετοχών',
     stockNews: 'Νέα Μετοχών',
     news: 'Νέα',
-    login: 'Είσοδος',
+    login: 'Σύνδεση',
     language: 'Γλώσσα',
     english: 'Αγγλικά',
     greek: 'Ελληνικά',
     german: 'Γερμανικά',
     spanish: 'Ισπανικά',
-    stockSymbolValidation: 'Stock symbol must be exactly 4 letters',
+    stockSymbolValidation: 'Το σύμβολο μετοχής πρέπει να αποτελείται από ακριβώς 4 γράμματα',
     forex: 'Forex',
-    crypto: 'Crypto',
-    dashboard: 'Dashboard',
-    analystsRecommendations: 'Analysts Recommendations',
-    providedByFinnhub: 'Provided By Finnhub'
+    crypto: 'Κρυπτονομίσματα',
+    dashboard: 'Πίνακας Ελέγχου',
+    analystsRecommendations: 'Συστάσεις Αναλυτών',
+    providedByFinnhub: 'Παρέχεται από την Finnhub'
   },
 };
