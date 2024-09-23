@@ -1,45 +1,19 @@
 import axios from 'axios';
+import {
+  FinancialDataAsReportedPayload,
+  FinancialDataAsReportedResponse,
+} from './IFinancialData';
+import {
+  IRecommendationsPayload,
+  IRecommendationsResponse,
+} from './IRecommendations';
+import { INewsPayload, INewsResponse } from './INewsData';
 
 export const api = axios.create({
   baseURL: 'https://finnhub.io/api',
 });
 
-interface FinancialDataAsReportedPayload {
-  symbol?: string;
-  cik?: string;
-  accessNumber?: number;
-  freq?: 'annual' | 'quarterly';
-  from?: Date;
-  to?: Date;
-}
-
-interface ReportItem {
-  concept: string;
-  label: string;
-  unit: string;
-  value: number;
-}
-
-interface Report {
-  bs: ReportItem[];
-  cf: ReportItem[];
-  ic: ReportItem[];
-}
-
-export interface FinancialDataAsReportedResponse {
-  acceptedDate: Date;
-  accessNumber: Date;
-  cik: string;
-  endDate: Date;
-  form: string;
-  quarter: number;
-  startDate: Date;
-  symbol: string;
-  year: number;
-  report: Report;
-}
-
-export const getFinancialDataAsReported = async (
+export const getFinancialAsReportedData = async (
   payload: FinancialDataAsReportedPayload
 ): Promise<FinancialDataAsReportedResponse[]> => {
   try {
@@ -49,8 +23,41 @@ export const getFinancialDataAsReported = async (
         token,
       },
     });
-    console.log(response.data.data, 'DATADATA');
     return response.data.data;
+  } catch (err) {
+    console.error('Error fetching financial data:', err);
+    throw err;
+  }
+};
+
+export const getRecommendationsData = async (
+  payload: IRecommendationsPayload
+): Promise<IRecommendationsResponse[]> => {
+  try {
+    const response = await api.get('/v1/stock/recommendation', {
+      params: {
+        ...payload,
+        token,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.error('Error fetching financial data:', err);
+    throw err;
+  }
+};
+
+export const getNewsData = async (
+  payload: INewsPayload
+): Promise<INewsResponse[]> => {
+  try {
+    const response = await api.get('/v1/news', {
+      params: {
+        ...payload,
+        token,
+      },
+    });
+    return response.data;
   } catch (err) {
     console.error('Error fetching financial data:', err);
     throw err;
