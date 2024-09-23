@@ -1,25 +1,34 @@
 import React from 'react';
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-} from 'react-router-dom';
-import { ChartsShared } from '../shared-elements/charts/ChartsShared';
+import { createBrowserRouter } from 'react-router-dom';
+import { Dashboard } from '../dashboard/Dashboard';
+import { Typography } from '@mui/material';
+import { StockAnalysis } from '../stock-analysis/StockAnalysis';
+import { Recommendations } from '../recommendations/Recommendations';
 import App from '../app';
+import { StockNews } from '../stock-news/StockNews';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <Typography> Error </Typography>,
     children: [
       {
-        path: 'recommendations', // Relative path to /recommendations
-        element: <ChartsShared symbol="AAPL" />,
+        path: '/',
+        element: <Dashboard />,
+      },
+      {
+        path: 'recommendations',
+        element: <Recommendations />,
+      },
+      {
+        path: 'stock-analysis',
+        element: <StockAnalysis />,
+      },
+      {
+        path: 'stock-news',
+        element: <StockNews />,
       },
     ],
-  },
-  {
-    path: 'recommendations',
-    element: <ChartsShared symbol="AAPL" />,
   },
 ]);
