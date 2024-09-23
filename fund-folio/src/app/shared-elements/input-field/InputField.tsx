@@ -1,24 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { InputFieldProps } from './InputFieldTypes';
+import { TextField } from '@mui/material';
+import { Controller, useFormContext } from 'react-hook-form';
 
-export const InputField = ({ onSubmit }: any) => {
-  const [field, setField] = useState('');
+export const InputField: React.FC<InputFieldProps> = ({
+  id,
+  label,
+  variant,
+  name,
+  disabled,
+  color,
+  required,
+  autoFocus,
+  errors,
+}) => {
+  const { control } = useFormContext<any>();
+
+  console.log(errors, 'errors');
+
   return (
-    <>
-      <label htmlFor="username" className="block text-lg font-medium mb-2">
-        Username:
-      </label>
-      <input
-        onChange={(e) => setField(e.target.value)}
-        type="text"
-        id="username"
-        name="username"
-        required
-        className="block w-80 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-      />
-      <button type="submit" onClick={() => onSubmit(field)}>
-        {' '}
-        Submit{' '}
-      </button>
-    </>
+    <Controller
+      name={name}
+      control={control}
+      defaultValue=""
+      render={({ field }) => (
+        <TextField
+          {...field}
+          id={id}
+          label={label}
+          variant={variant}
+          disabled={disabled}
+          color={color}
+          error={!!errors}
+          helperText={errors}
+          required={required}
+          autoFocus={autoFocus}
+          fullWidth
+        />
+      )}
+    />
   );
 };
