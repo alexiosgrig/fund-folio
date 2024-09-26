@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   AppBar,
   Button,
@@ -22,6 +22,16 @@ const Header = () => {
   const handleMenu = () => {
     setOpenMenu((prevState) => !prevState);
   };
+
+  const menuItemList = useMemo(() => {
+    return [
+      { title: 'en', label: t('english') },
+      { title: 'gr', label: t('greek') },
+      { title: 'de', label: t('german') },
+      { title: 'sp', label: t('spanish') },
+    ];
+  }, [t]);
+
   return (
     <AppBar>
       <Toolbar>
@@ -45,18 +55,11 @@ const Header = () => {
             horizontal: 'right',
           }}
         >
-          <MenuItem onClick={changeLanguage} title="en">
-            {t('english')}
-          </MenuItem>
-          <MenuItem onClick={changeLanguage} title="gr">
-            {t('greek')}
-          </MenuItem>
-          <MenuItem onClick={changeLanguage} title="de">
-            {t('german')}
-          </MenuItem>
-          <MenuItem onClick={changeLanguage} title="sp">
-            {t('spanish')}
-          </MenuItem>
+          {menuItemList.map((item) => (
+            <MenuItem onClick={changeLanguage} title={item.title}>
+              {item.label}
+            </MenuItem>
+          ))}
         </Menu>
       </Toolbar>
     </AppBar>
