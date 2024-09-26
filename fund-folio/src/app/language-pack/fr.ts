@@ -17,6 +17,9 @@ export const fr = {
     crypto: 'Crypto-monnaie',
     dashboard: 'Tableau de bord',
     analystsRecommendations: 'Recommandations des analystes',
-    providedByFinnhub: 'Fournie par Finnhub'
+    providedByFinnhub: 'Fournie par Finnhub',
+    freeCashFlow: 'Free Cash Flow',
+    incomeStatement: 'Income Statement',
+    balanceSheet: 'Balance'
   },
 };

@@ -18,5 +18,8 @@ export const en = {
     dashboard: 'Dashboard',
     analystsRecommendations: 'Analysts Recommendations',
     providedByFinnhub: 'Provided By Finnhub',
+    freeCashFlow: 'Free Cash Flow',
+    incomeStatement: 'Income Statement',
+    balanceSheet: 'Balance Sheet'
   },
 };

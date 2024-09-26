@@ -17,6 +17,9 @@ export const gr = {
     crypto: 'Κρυπτονομίσματα',
     dashboard: 'Πίνακας Ελέγχου',
     analystsRecommendations: 'Συστάσεις Αναλυτών',
-    providedByFinnhub: 'Παρέχεται από την Finnhub'
+    providedByFinnhub: 'Παρέχεται από την Finnhub',
+    freeCashFlow: 'Free Cash Flow',
+    incomeStatement: 'Income Statement',
+    balanceSheet: 'Balance'
   },
 };
