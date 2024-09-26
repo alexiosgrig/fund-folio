@@ -16,8 +16,6 @@ export const InputField: React.FC<InputFieldProps> = ({
 }) => {
   const { control } = useFormContext<any>();
 
-  console.log(errors, 'errors');
-
   return (
     <Controller
       name={name}
