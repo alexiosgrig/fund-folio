@@ -55,8 +55,8 @@ const Header = () => {
             horizontal: 'right',
           }}
         >
-          {menuItemList.map((item) => (
-            <MenuItem onClick={changeLanguage} title={item.title}>
+          {menuItemList.map((item, index) => (
+            <MenuItem onClick={changeLanguage} title={item.title} key={index}>
               {item.label}
             </MenuItem>
           ))}
