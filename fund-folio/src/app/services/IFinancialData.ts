@@ -21,8 +21,8 @@ export interface Report {
 }
 
 export interface FinancialDataAsReportedResponse {
-  acceptedDate: Date;
-  accessNumber: Date;
+  acceptedDate: string;
+  accessNumber: string;
   cik: string;
   endDate: Date;
   form: string;
