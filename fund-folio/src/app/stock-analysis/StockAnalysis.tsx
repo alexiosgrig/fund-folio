@@ -12,7 +12,6 @@ import {
   Grid2,
   Snackbar,
 } from '@mui/material';
-import { AccordionShared } from '../shared-elements/accordion/AccordionShared';
 import { getFinancialAsReportedData } from '../services/services';
 import { FinancialDataAsReportedPayload } from '../services/IFinancialData';
 import { SelectField } from '../shared-elements/select-field/SelectField';
