@@ -1,4 +1,3 @@
-// src/features/counterSaga.ts
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { getMetricsData } from '../services/services';
 import {
@@ -7,22 +6,23 @@ import {
   fetchMetricsSuccess,
 } from '../slices/metricsSlice';
 import { IMetricsPayload, IMetricsResponse } from '../services/IMetricsData';
+import { AxiosError } from 'axios';
 
 function* fetchMetricsAsync(action: { payload: IMetricsPayload }) {
   try {
     const data: IMetricsResponse = yield call(getMetricsData, action.payload);
     yield put(fetchMetricsSuccess(data));
   } catch (error) {
-    yield put(fetchMetricsError(error));
+    const axiosError = error as AxiosError<IMetricsResponse>;
+    yield put(fetchMetricsError(axiosError));
     console.error('Increment failed', error);
   }
 }
 
-function* watchMetrics()  {
+export function* watchMetrics() {
   yield takeEvery(fetchMetrics, fetchMetricsAsync);
 }
 
-// Export root saga
-export default function* rootSaga()  {
+export default function* rootSaga() {
   yield watchMetrics();
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Button,
   Card,
@@ -8,32 +8,33 @@ import {
   Grid2,
 } from '@mui/material';
 import { CardNews } from './CardNews';
-import { getNewsData } from '../services/services';
-import { INewsPayload, INewsResponse } from '../services/INewsData';
 import { SelectField } from '../shared-elements/select-field/SelectField';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import {
+  fetchNews,
+  selectNewsData,
+  selectNewsLoading,
+} from '../slices/newsSlice';
+import { INewsPayload } from '../services/INewsData';
 
 export const StockNews = () => {
   const { t } = useTranslation();
-  const [news, setNews] = useState<INewsResponse[]>([]);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useAppDispatch();
+  const newsData = useAppSelector(selectNewsData);
+  const loading = useAppSelector(selectNewsLoading);
+
   const categoryList = [
     { value: 'general', label: 'general' },
     { value: 'forex', label: 'forex' },
     { value: 'crypto', label: 'crypto' },
   ];
+
   const methods = useForm<INewsPayload>();
   const { handleSubmit } = methods;
   const handleSearch = async (payload: INewsPayload) => {
-    setLoading(true);
-    try {
-      const res = await getNewsData(payload);
-      setNews(res);
-      setLoading(false);
-    } catch (e) {
-      console.error(e);
-    }
+    dispatch(fetchNews(payload));
   };
 
   return (
@@ -58,7 +59,7 @@ export const StockNews = () => {
             <CircularProgress color="error" />
           ) : (
             <Grid2 container spacing={8}>
-              {news.map((item, index) => (
+              {newsData?.map((item, index) => (
                 <Grid2 size={3} key={index}>
                   <CardNews news={item} />
                 </Grid2>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { InputField } from '../shared-elements/input-field/InputField';
 import { useTranslation } from 'react-i18next';
@@ -12,16 +12,23 @@ import {
   Grid2,
   Snackbar,
 } from '@mui/material';
-import { getFinancialAsReportedData } from '../services/services';
 import { FinancialDataAsReportedPayload } from '../services/IFinancialData';
 import { SelectField } from '../shared-elements/select-field/SelectField';
 import { StockAnalysisPaper } from './StockAnalysisPaper';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import {
+  fetchStockAnalysis,
+  selectStockAnalysis,
+  selectStockAnalysisError,
+  selectStockAnalysisLoading,
+} from '../slices/stockAnalysisSlice';
 
 export const StockAnalysis = () => {
   const { t } = useTranslation();
-  const [data, setData] = useState(undefined);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState({});
+  const dispatch = useAppDispatch();
+  const stockAnalysisData = useAppSelector(selectStockAnalysis);
+  const loading = useAppSelector(selectStockAnalysisLoading);
+  const error = useAppSelector(selectStockAnalysisError);
   const methods = useForm();
 
   const statementList = [
@@ -34,17 +41,9 @@ export const StockAnalysis = () => {
     { value: 'annual', label: 'Annual' },
     { value: 'quarterly', label: 'Quarterly' },
   ];
-
+  
   const searchStock = async (payload: FinancialDataAsReportedPayload) => {
-    setLoading(true);
-    try {
-      const res = await getFinancialAsReportedData(payload);
-      setData(res);
-      setLoading(false);
-    } catch (e) {
-      setError(e);
-      console.error(e);
-    }
+    dispatch(fetchStockAnalysis(payload));
   };
 
   return (
@@ -100,7 +99,7 @@ export const StockAnalysis = () => {
                         <StockAnalysisPaper
                           statement={e.statement}
                           label={e.label}
-                          data={data}
+                          data={stockAnalysisData}
                         />
                       </Grid2>
                     ))}
