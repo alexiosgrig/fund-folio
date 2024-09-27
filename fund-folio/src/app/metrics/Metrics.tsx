@@ -14,8 +14,6 @@ export const Metrics = () => {
   const metricsData = useAppSelector(selectMetricsData);
   const metricsLoading = useAppSelector(selectMetricsLoading);
 
-  console.log(metricsData, metricsLoading, 'metricsData');
-
   const searchMetrics = async (payload: IMetricsPayload) => {
     dispatch(fetchMetrics(payload));
   };
