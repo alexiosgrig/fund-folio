@@ -6,6 +6,7 @@ import { StockAnalysis } from '../stock-analysis/StockAnalysis';
 import { Recommendations } from '../recommendations/Recommendations';
 import App from '../app';
 import { StockNews } from '../stock-news/StockNews';
+import { Metrics } from '../metrics/Metrics';
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: 'stock-news',
         element: <StockNews />,
+      },
+      {
+        path: 'metrics',
+        element: <Metrics />,
       },
     ],
   },
