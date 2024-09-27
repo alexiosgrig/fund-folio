@@ -25,6 +25,7 @@ export const Dashboard = () => {
     { title: t('stockNews'), router: 'stock-news' },
     { title: t('forex'), router: 'forex' },
     { title: t('crypto'), router: 'crypto' },
+    { title: t('metrics'), router: 'metrics' },
   ];
 
   const startIcon = (title) => {
