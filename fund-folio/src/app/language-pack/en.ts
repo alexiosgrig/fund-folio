@@ -20,6 +20,7 @@ export const en = {
     providedByFinnhub: 'Provided By Finnhub',
     freeCashFlow: 'Free Cash Flow',
     incomeStatement: 'Income Statement',
-    balanceSheet: 'Balance Sheet'
+    balanceSheet: 'Balance Sheet',
+    metrics: 'Metrics',
   },
 };

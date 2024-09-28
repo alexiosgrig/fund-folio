@@ -17,6 +17,7 @@ export const de = {
     crypto: 'Kryptowährungen',
     freeCashFlow: 'Free Cash Flow',
     incomeStatement: 'Income Statement',
-    balanceSheet: 'Balance'
+    balanceSheet: 'Balance',
+    metrics: 'Metrics',
   },
 };

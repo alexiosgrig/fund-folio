@@ -32,9 +32,9 @@ export const StockAnalysis = () => {
   const methods = useForm();
 
   const statementList = [
-    { label: t('freeCashFlow'), statement: 'fc' },
-    { label: t('incomeStatement'), statement: 'is' },
-    { label: t('balanceSheet'), statement: 'is' },
+    { label: t('freeCashFlow'), statement: 'cf' },
+    { label: t('incomeStatement'), statement: 'ic' },
+    { label: t('balanceSheet'), statement: 'bs' },
   ];
 
   const list = [
