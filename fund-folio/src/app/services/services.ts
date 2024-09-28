@@ -11,7 +11,7 @@ import {
 import { INewsPayload, INewsResponse } from './INewsData';
 import { IMetricsPayload, IMetricsResponse } from './IMetricsData';
 
-const { apiToken, apiUrl } = environment;
+const { token, apiUrl } = environment;
 
 export const api = axios.create({
   baseURL: apiUrl,
@@ -24,7 +24,7 @@ export const getFinancialAsReportedData = async (
     const response = await api.get('v1/stock/financials-reported', {
       params: {
         ...payload,
-        apiToken,
+        token,
       },
     });
     return response.data.data;
@@ -41,7 +41,7 @@ export const getRecommendationsData = async (
     const response = await api.get('/v1/stock/recommendation', {
       params: {
         ...payload,
-        apiToken,
+        token,
       },
     });
     return response.data;
@@ -58,7 +58,7 @@ export const getNewsData = async (
     const response = await api.get('/v1/news', {
       params: {
         ...payload,
-        apiToken,
+        token,
       },
     });
     return response.data;
@@ -75,7 +75,7 @@ export const getMetricsData = async (
     const response = await api.get('/v1/stock/metric', {
       params: {
         ...payload,
-        apiToken,
+        token,
       },
     });
     return response.data;
