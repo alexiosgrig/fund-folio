@@ -1,3 +1,4 @@
+import { environment } from './../enviroment';
 import axios from 'axios';
 import {
   FinancialDataAsReportedPayload,
@@ -10,8 +11,10 @@ import {
 import { INewsPayload, INewsResponse } from './INewsData';
 import { IMetricsPayload, IMetricsResponse } from './IMetricsData';
 
+const { apiToken, apiUrl } = environment;
+
 export const api = axios.create({
-  baseURL: 'https://finnhub.io/api',
+  baseURL: apiUrl,
 });
 
 export const getFinancialAsReportedData = async (
@@ -21,7 +24,7 @@ export const getFinancialAsReportedData = async (
     const response = await api.get('v1/stock/financials-reported', {
       params: {
         ...payload,
-        token,
+        apiToken,
       },
     });
     return response.data.data;
@@ -38,7 +41,7 @@ export const getRecommendationsData = async (
     const response = await api.get('/v1/stock/recommendation', {
       params: {
         ...payload,
-        token,
+        apiToken,
       },
     });
     return response.data;
@@ -55,7 +58,7 @@ export const getNewsData = async (
     const response = await api.get('/v1/news', {
       params: {
         ...payload,
-        token,
+        apiToken,
       },
     });
     return response.data;
@@ -72,7 +75,7 @@ export const getMetricsData = async (
     const response = await api.get('/v1/stock/metric', {
       params: {
         ...payload,
-        token,
+        apiToken,
       },
     });
     return response.data;
