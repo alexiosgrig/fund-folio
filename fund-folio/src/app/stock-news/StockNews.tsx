@@ -41,31 +41,37 @@ export const StockNews = () => {
     <FormProvider {...methods}>
       <Card>
         <CardContent>
-          <Card>
-            <CardContent>
-              <SelectField
-                list={categoryList}
-                label={t('category')}
-                name={'category'}
-              />
-              <CardActions>
-                <Button onClick={handleSubmit(handleSearch)}>
-                  {t('search')}
-                </Button>
-              </CardActions>
-            </CardContent>
-          </Card>
-          {loading ? (
-            <CircularProgress color="error" />
-          ) : (
-            <Grid2 container spacing={8}>
-              {newsData?.map((item, index) => (
-                <Grid2 size={3} key={index}>
-                  <CardNews news={item} />
-                </Grid2>
-              ))}
+          <Grid2 container spacing={8}>
+            <Grid2 size={12}>
+              <Card>
+                <CardContent>
+                  <SelectField
+                    list={categoryList}
+                    label={t('category')}
+                    name={'category'}
+                  />
+                  <CardActions>
+                    <Button onClick={handleSubmit(handleSearch)}>
+                      {t('search')}
+                    </Button>
+                  </CardActions>
+                </CardContent>
+              </Card>
             </Grid2>
-          )}
+            <Grid2 size={12}>
+              {loading ? (
+                <CircularProgress color="error" />
+              ) : (
+                <Grid2 container spacing={8}>
+                  {newsData?.map((item, index) => (
+                    <Grid2 size={3} key={index}>
+                      <CardNews news={item} />
+                    </Grid2>
+                  ))}
+                </Grid2>
+              )}
+            </Grid2>
+          </Grid2>
         </CardContent>
       </Card>
     </FormProvider>
