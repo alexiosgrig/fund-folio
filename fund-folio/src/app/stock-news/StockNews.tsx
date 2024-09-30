@@ -58,7 +58,11 @@ export const StockNews = () => {
                     <CardActions
                       sx={{ justifyContent: 'flex-end', padding: '50px' }}
                     >
-                      <Button onClick={handleSubmit(handleSearch)}>
+                      <Button
+                        onClick={handleSubmit(handleSearch)}
+                        variant="contained"
+                        color="primary"
+                      >
                         {t('search')}
                       </Button>
                     </CardActions>

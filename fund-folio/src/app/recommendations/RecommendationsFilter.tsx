@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, CardContent, Grid2 } from '@mui/material';
+import { Button, Card, CardActions, CardContent, Grid2 } from '@mui/material';
 import { InputField } from '../shared-elements/input-field/InputField';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -39,13 +39,15 @@ export const RecommendationsFilter = () => {
               />
             </Grid2>
             <Grid2 size={6}>
-              <Button
-                onClick={handleSubmit(getRecommendations)}
-                variant="contained"
-                color="primary"
-              >
-                {t('search')}
-              </Button>
+              <CardActions sx={{ justifyContent: 'flex-end', padding: '50px' }}>
+                <Button
+                  onClick={handleSubmit(getRecommendations)}
+                  variant="contained"
+                  color="primary"
+                >
+                  {t('search')}
+                </Button>
+              </CardActions>
             </Grid2>
           </Grid2>
         </CardContent>

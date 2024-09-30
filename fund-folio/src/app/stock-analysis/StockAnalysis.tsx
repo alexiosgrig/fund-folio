@@ -42,7 +42,7 @@ export const StockAnalysis = () => {
     { value: 'annual', label: 'Annual' },
     { value: 'quarterly', label: 'Quarterly' },
   ];
-  
+
   const searchStock = async (payload: FinancialDataAsReportedPayload) => {
     dispatch(fetchStockAnalysis(payload));
   };
@@ -50,7 +50,7 @@ export const StockAnalysis = () => {
   return (
     <FormProvider {...methods}>
       <Card sx={{ padding: '50px' }}>
-        <CardHeader title={t('stockAnalysis')}/>
+        <CardHeader title={t('stockAnalysis')} />
         <CardContent>
           <Grid2
             spacing={8}
@@ -96,8 +96,8 @@ export const StockAnalysis = () => {
               <Card>
                 <CardContent>
                   <Grid2 container spacing={8}>
-                    {statementList.map((e) => (
-                      <Grid2 size={12}>
+                    {statementList.map((e, index) => (
+                      <Grid2 size={12} key={index}>
                         <StockAnalysisPaper
                           statement={e.statement}
                           label={e.label}
