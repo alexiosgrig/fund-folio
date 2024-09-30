@@ -40,7 +40,7 @@ export const getRecommendationsData = async (
   try {
     const response = await api.get('/v1/stock/recommendation', {
       params: {
-        ...payload,
+        symbol: payload,
         token,
       },
     });
