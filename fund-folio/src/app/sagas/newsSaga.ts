@@ -23,7 +23,3 @@ function* fetchNewsAsync(action: { payload: INewsPayload }) {
 export function* watchNews() {
   yield takeEvery(fetchNews, fetchNewsAsync);
 }
-
-export default function* rootSaga() {
-  yield watchNews();
-}

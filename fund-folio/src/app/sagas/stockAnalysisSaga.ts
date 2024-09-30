@@ -28,7 +28,3 @@ function* fetchStockAnalysisAsync(action: {
 export function* watchStockAnalysis() {
   yield takeEvery(fetchStockAnalysis, fetchStockAnalysisAsync);
 }
-
-export default function* rootSaga() {
-  yield watchStockAnalysis();
-}
