@@ -38,6 +38,9 @@ export const stockAnalysisSlice = createSlice({
     fetchStockAnalysisError: (state, action: PayloadAction<AxiosError>) => {
       state.error = action.payload;
     },
+    clearStockAnalysis: (state, action: PayloadAction<unknown>) => {
+      state.stockAnalysisData = undefined;
+    },
   },
 });
 export const selectMetricsState = (state: RootState): StockAnalysisState =>
@@ -57,6 +60,7 @@ export const {
   fetchStockAnalysis,
   fetchStockAnalysisSuccess,
   fetchStockAnalysisError,
+  clearStockAnalysis,
 } = stockAnalysisSlice.actions;
 
 export default stockAnalysisSlice.reducer;

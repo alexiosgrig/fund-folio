@@ -29,6 +29,9 @@ export const metricsSlice = createSlice({
     fetchMetricsError: (state, action: PayloadAction<AxiosError>) => {
       state.error = action.payload;
     },
+    clearMetricsData: (state, action: PayloadAction<unknown>) => {
+      state.metricsData = undefined;
+    },
   },
 });
 export const selectMetricsState = (state: RootState): MetricsState =>
