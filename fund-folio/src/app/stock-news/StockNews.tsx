@@ -4,6 +4,7 @@ import {
   Card,
   CardActions,
   CardContent,
+  CardHeader,
   CircularProgress,
   Grid2,
 } from '@mui/material';
@@ -39,22 +40,29 @@ export const StockNews = () => {
 
   return (
     <FormProvider {...methods}>
-      <Card>
+      <Card sx={{ padding: '50px' }}>
+        <CardHeader title={t('stockNews')} />
         <CardContent>
-          <Grid2 container spacing={8}>
+          <Grid2 container spacing={12}>
             <Grid2 size={12}>
               <Card>
                 <CardContent>
-                  <SelectField
-                    list={categoryList}
-                    label={t('category')}
-                    name={'category'}
-                  />
-                  <CardActions>
-                    <Button onClick={handleSubmit(handleSearch)}>
-                      {t('search')}
-                    </Button>
-                  </CardActions>
+                  <Grid2 container spacing={12}>
+                    <Grid2 size={6}>
+                      <SelectField
+                        list={categoryList}
+                        label={t('category')}
+                        name={'category'}
+                      />
+                    </Grid2>
+                    <CardActions
+                      sx={{ justifyContent: 'flex-end', padding: '50px' }}
+                    >
+                      <Button onClick={handleSubmit(handleSearch)}>
+                        {t('search')}
+                      </Button>
+                    </CardActions>
+                  </Grid2>
                 </CardContent>
               </Card>
             </Grid2>

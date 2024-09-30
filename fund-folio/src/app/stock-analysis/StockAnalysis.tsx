@@ -8,6 +8,7 @@ import {
   Card,
   CardActions,
   CardContent,
+  CardHeader,
   CircularProgress,
   Grid2,
   Snackbar,
@@ -48,7 +49,8 @@ export const StockAnalysis = () => {
 
   return (
     <FormProvider {...methods}>
-      <Card sx={{ padding: '100px' }}>
+      <Card sx={{ padding: '50px' }}>
+        <CardHeader title={t('stockAnalysis')}/>
         <CardContent>
           <Grid2
             spacing={8}
