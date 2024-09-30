@@ -29,6 +29,9 @@ export const newsSlice = createSlice({
     fetchNewsError: (state, action: PayloadAction<AxiosError>) => {
       state.error = action.payload;
     },
+    clearNewsData: (state, action: PayloadAction<unknown>) => {
+      state.newsData = undefined;
+    },
   },
 });
 export const selectNewsState = (state: RootState): NewsState => state.news;
@@ -41,7 +44,7 @@ export const selectNewsLoading = (state: RootState): boolean =>
 
 export const selectNewsError = (state: RootState): AxiosError =>
   state.news.error;
-export const { fetchNews, fetchNewsSuccess, fetchNewsError } =
+export const { fetchNews, fetchNewsSuccess, fetchNewsError, clearNewsData } =
   newsSlice.actions;
 
 export default newsSlice.reducer;
