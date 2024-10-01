@@ -10,6 +10,7 @@ import {
 } from './IRecommendations';
 import { INewsPayload, INewsResponse } from './INewsData';
 import { IMetricsPayload, IMetricsResponse } from './IMetricsData';
+import { IMarketHolidayPayload, IMarketHolidayResponse } from './IMarketHolidayData';
 
 const { token, apiUrl } = environment;
 
@@ -75,6 +76,23 @@ export const getMetricsData = async (
     const response = await api.get('/v1/stock/metric', {
       params: {
         ...payload,
+        token,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.error('Error fetching financial data:', err);
+    throw err;
+  }
+};
+
+export const getMarketHolidayData = async (
+  payload: IMarketHolidayPayload
+): Promise<IMarketHolidayResponse> => {
+  try {
+    const response = await api.get('/v1/stock/market-holiday', {
+      params: {
+        exchange : payload.exchange,
         token,
       },
     });

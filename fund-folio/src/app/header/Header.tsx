@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   AppBar,
   Button,
@@ -8,8 +8,16 @@ import {
   Typography,
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import {
+  fetchMarketHoliday,
+  selectMarketHolidayData,
+} from '../slices/marketHolidaySlice';
 
 const Header = () => {
+  const dispatch = useAppDispatch();
+  const marketHolidayData = useAppSelector(selectMarketHolidayData);
+
   const [openMenu, setOpenMenu] = useState(false);
   const { t, i18n } = useTranslation();
 
@@ -32,12 +40,27 @@ const Header = () => {
     ];
   }, [t]);
 
+  useEffect(() => {
+    dispatch(fetchMarketHoliday({ exchange: 'US' }));
+  }, [dispatch]);
+
+  const currentDate = new Date().toISOString().split('T')[0]; // Output: 'YYYY-MM-DD'
+
+  const matchingEvent = marketHolidayData?.data?.find(
+    (event) => event.atDate === currentDate
+  );
+  console.log(marketHolidayData);
   return (
     <AppBar>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           {t('news')}
         </Typography>
+        {matchingEvent && (
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            {matchingEvent.eventName}
+          </Typography>
+        )}
         <Button color="inherit" onClick={handleMenu}>
           {t('language')}
         </Button>

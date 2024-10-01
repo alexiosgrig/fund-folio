@@ -5,6 +5,7 @@ import stockAnalysisReducer from '../slices/stockAnalysisSlice';
 import newsReducer from '../slices/newsSlice';
 import recommendationsReducer from '../slices/recommendationsSlice';
 import notificationsReducer from '../slices/notificationsSlice';
+import marketHolidayReducer from '../slices/marketHolidaySlice';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from '../sagas/rootSaga';
 
@@ -17,6 +18,7 @@ export const store = configureStore({
     news: newsReducer,
     recommendations: recommendationsReducer,
     notifications: notificationsReducer,
+    marketHoliday: marketHolidayReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
