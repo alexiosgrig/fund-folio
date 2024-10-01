@@ -2,26 +2,23 @@ import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import {
-  Alert,
   Card,
   CardContent,
   CardHeader,
   CircularProgress,
   Grid2,
-  Snackbar,
 } from '@mui/material';
 import { useAppSelector } from '../store/hooks';
 import {
-  selectStockAnalysisError,
   selectStockAnalysisLoading,
 } from '../slices/stockAnalysisSlice';
 import { StockAnalysisFilter } from './StockAnalysisFilter';
 import { StockAnalysisDisplay } from './StockAnalysisDisplay';
+import { SnackbarShared } from '../shared-elements/SnackbarShared';
 
 export const StockAnalysis = () => {
   const { t } = useTranslation();
   const loading = useAppSelector(selectStockAnalysisLoading);
-  const error = useAppSelector(selectStockAnalysisError);
   const methods = useForm();
 
   return (
@@ -48,12 +45,8 @@ export const StockAnalysis = () => {
             </Grid2>
           </Grid2>
         </CardContent>
+        <SnackbarShared />
       </Card>
-      <Snackbar open={!!error?.message} autoHideDuration={1}>
-        <Alert severity="error" variant="filled" sx={{ width: '100%' }}>
-          {error?.message}
-        </Alert>
-      </Snackbar>
     </FormProvider>
   );
 };
