@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test"
+    "build": "npx nx build",
+    "test": "npx nx test"
   },
   "private": true,
   "dependencies": {
