@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Button,
   Card,
@@ -14,6 +14,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {
+  clearNewsData,
   fetchNews,
   selectNewsData,
   selectNewsLoading,
@@ -38,6 +39,9 @@ export const StockNews = () => {
     dispatch(fetchNews(payload));
   };
 
+  useEffect(() => {
+    dispatch(clearNewsData());
+  });
   return (
     <FormProvider {...methods}>
       <Card sx={{ padding: '50px' }}>
