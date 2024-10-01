@@ -10,7 +10,6 @@ interface NotificationsState {
 interface NotificationsPayload {
   message: string;
   severity: string;
-  open: boolean;
 }
 
 const initialState: NotificationsState = {
@@ -20,7 +19,7 @@ const initialState: NotificationsState = {
 };
 
 export const notificationSlice = createSlice({
-  name: 'notification',
+  name: 'notifications',
   initialState,
   reducers: {
     fetchNotifications: (
@@ -29,9 +28,9 @@ export const notificationSlice = createSlice({
     ) => {
       state.message = action.payload.message;
       state.severity = action.payload.severity;
-      state.open = action.payload.open;
+      state.open = true;
     },
-    clearNotificationsData: (state, action: PayloadAction<unknown>) => {
+    clearNotificationsData: (state) => {
       state.message = undefined;
       state.severity = undefined;
       state.open = false;
