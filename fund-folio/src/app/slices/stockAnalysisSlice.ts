@@ -7,7 +7,7 @@ import {
 import { AxiosError } from 'axios';
 
 interface StockAnalysisState {
-  stockAnalysisData: FinancialDataAsReportedResponse | undefined;
+  stockAnalysisData: FinancialDataAsReportedResponse[] | undefined;
   error: AxiosError;
   loading: boolean;
 }
@@ -30,13 +30,16 @@ export const stockAnalysisSlice = createSlice({
     },
     fetchStockAnalysisSuccess: (
       state,
-      action: PayloadAction<FinancialDataAsReportedResponse>
+      action: PayloadAction<FinancialDataAsReportedResponse[]>
     ) => {
       state.stockAnalysisData = action.payload;
       state.loading = false;
     },
     fetchStockAnalysisError: (state, action: PayloadAction<AxiosError>) => {
       state.error = action.payload;
+    },
+    clearStockAnalysis: (state, action: PayloadAction<unknown>) => {
+      state.stockAnalysisData = undefined;
     },
   },
 });
@@ -57,6 +60,7 @@ export const {
   fetchStockAnalysis,
   fetchStockAnalysisSuccess,
   fetchStockAnalysisError,
+  clearStockAnalysis,
 } = stockAnalysisSlice.actions;
 
 export default stockAnalysisSlice.reducer;

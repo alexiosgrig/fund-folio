@@ -9,7 +9,6 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import ReplayIcon from '@mui/icons-material/Replay';
 import RecommendIcon from '@mui/icons-material/Recommend';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
@@ -28,7 +27,7 @@ export const Dashboard = () => {
     { title: t('metrics'), router: 'metrics' },
   ];
 
-  const startIcon = (title) => {
+  const startIcon = (title: string) => {
     switch (title) {
       case 'recommendations':
         return <RecommendIcon />;
@@ -49,7 +48,7 @@ export const Dashboard = () => {
     <Grid2 container rowSpacing={8} spacing={8}>
       {dashboardCardList.map((list, index) => (
         <Grid2 size={4} key={index}>
-          <Card variant="elevation">
+          <Card variant="elevation" sx={{ padding: '50px' }}>
             <CardContent>
               <CardHeader title={list?.title} />
               <CardActions>

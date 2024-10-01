@@ -59,8 +59,8 @@ export default function TableSheetShare({
         <TableHead>
           <TableRow>
             <StyledTableCell>{'Description'}</StyledTableCell>
-            {data?.slice(0, 4).map((row) => (
-              <StyledTableCell>{`Acceptance Date: ${
+            {data?.slice(0, 4).map((row, index) => (
+              <StyledTableCell key={index}>{`Acceptance Date: ${
                 row.acceptedDate.split(' ')[0]
               }`}</StyledTableCell>
             ))}

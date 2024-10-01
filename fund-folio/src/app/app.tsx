@@ -3,12 +3,13 @@ import { Outlet } from 'react-router-dom';
 import { Layout } from './layout/Layout';
 import { ThemeProvider } from '@emotion/react';
 import { createTheme, CssBaseline } from '@mui/material';
+import { SnackbarShared } from './shared-elements/SnackbarShared';
 
 export function App() {
   const theme = createTheme({
     palette: {
       background: {
-        default: '#e3f2fd', // Set your desired background color
+        default: '#e3f2fd',
       },
     },
   });
@@ -17,6 +18,7 @@ export function App() {
       <CssBaseline />
       <Layout>
         <Outlet />
+        <SnackbarShared />
       </Layout>
     </ThemeProvider>
   );

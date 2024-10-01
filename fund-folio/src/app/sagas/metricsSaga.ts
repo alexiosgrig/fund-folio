@@ -22,7 +22,3 @@ function* fetchMetricsAsync(action: { payload: IMetricsPayload }) {
 export function* watchMetrics() {
   yield takeEvery(fetchMetrics, fetchMetricsAsync);
 }
-
-export default function* rootSaga() {
-  yield watchMetrics();
-}
