@@ -29,7 +29,7 @@ export const newsSlice = createSlice({
     fetchNewsError: (state, action: PayloadAction<AxiosError>) => {
       state.error = action.payload;
     },
-    clearNewsData: (state, action: PayloadAction<unknown>) => {
+    clearNewsData: (state) => {
       state.newsData = undefined;
     },
   },
