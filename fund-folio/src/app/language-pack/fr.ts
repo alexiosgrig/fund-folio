@@ -13,6 +13,7 @@ export const fr = {
     german: 'Allemand',
     spanish: 'Espagnol',
     stockSymbolValidation: 'Le symbole boursier doit comporter exactement 4 lettres',
+    general: 'General',
     forex: 'Forex',
     crypto: 'Crypto-monnaie',
     dashboard: 'Tableau de bord',

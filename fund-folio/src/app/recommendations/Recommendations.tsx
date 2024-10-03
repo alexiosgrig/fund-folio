@@ -24,7 +24,7 @@ export const Recommendations = () => {
   const { t } = useTranslation();
   const validationSchema = Yup.object().shape({
     stock: Yup.string()
-      .length(4, t('stockSymbolValidation'))
+      .max(4, t('stockSymbolValidation')) 
       .required('Stock is required'),
   });
   
@@ -36,7 +36,7 @@ export const Recommendations = () => {
     return () => {
       dispatch(clearRecommendationsData());
     };
-  }, [])
+  }, [dispatch]);
 
   return (
     <FormProvider {...methods}>
@@ -46,14 +46,11 @@ export const Recommendations = () => {
           subheader={t('providedByFinnhub')}
         />
         <CardContent>
-          <Grid2
-            container
-            spacing={12}
-            justifyContent="center"
-            alignItems="center"
-          >
-            <RecommendationsFilter />
-            <Grid2 size={6}>
+          <Grid2 container spacing={12}>
+            <Grid2 size={12}>
+              <RecommendationsFilter />
+            </Grid2>
+            <Grid2 size={12}>
               <ChartsShared series={series} loading={loading} />
             </Grid2>
           </Grid2>

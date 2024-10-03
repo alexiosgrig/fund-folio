@@ -13,6 +13,7 @@ export const de = {
     german: 'Deutsch',
     spanish: 'Spanisch',
     stockSymbolValidation: 'Das Aktiensymbol muss genau 4 Buchstaben haben',
+    general: 'General',
     forex: 'Forex',
     crypto: 'Kryptowährungen',
     freeCashFlow: 'Free Cash Flow',

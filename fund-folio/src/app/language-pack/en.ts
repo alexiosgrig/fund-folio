@@ -13,6 +13,7 @@ export const en = {
     german: 'German',
     spanish: 'Spanish',
     stockSymbolValidation: 'Stock symbol must be exactly 4 letters',
+    general: 'General',
     forex: 'Forex',
     crypto: 'Crypto',
     dashboard: 'Dashboard',

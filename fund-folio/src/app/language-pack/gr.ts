@@ -13,6 +13,7 @@ export const gr = {
     german: 'Γερμανικά',
     spanish: 'Ισπανικά',
     stockSymbolValidation: 'Το σύμβολο μετοχής πρέπει να αποτελείται από ακριβώς 4 γράμματα',
+    general: 'General',
     forex: 'Forex',
     crypto: 'Κρυπτονομίσματα',
     dashboard: 'Πίνακας Ελέγχου',

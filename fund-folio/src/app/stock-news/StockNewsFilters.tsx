@@ -13,9 +13,9 @@ export const StockNewsFilters = () => {
   const dispatch = useAppDispatch();
 
   const categoryList = [
-    { value: 'general', label: 'general' },
-    { value: 'forex', label: 'forex' },
-    { value: 'crypto', label: 'crypto' },
+    { value: 'general', label: t('general') },
+    { value: 'forex', label: t('forex') },
+    { value: 'crypto', label: t('crypto') },
   ];
 
   const handleSearch = async (payload: INewsPayload) => {

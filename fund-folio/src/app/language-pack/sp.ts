@@ -13,6 +13,7 @@ export const sp = {
     german: 'Alemán',
     spanish: 'Español',
     stockSymbolValidation: 'El símbolo de las acciones debe tener exactamente 4 letras',
+    general: 'General',
     forex: 'Forex',
     crypto: 'Criptomonedas',
     dashboard: 'Panel de Control',
