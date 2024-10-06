@@ -26,7 +26,7 @@ export const StockAnalysisFilter = () => {
     <Card>
       <CardContent>
         <Grid2 container spacing={12}>
-          <Grid2 size={6}>
+          <Grid2 size={{ md: 6, xs: 12 }}>
             <InputField
               id={'symbol'}
               label={t('enterStock')}
@@ -35,7 +35,7 @@ export const StockAnalysisFilter = () => {
               color="error"
             />
           </Grid2>
-          <Grid2 size={6}>
+          <Grid2 size={{ md: 6, xs: 12 }}>
             <SelectField list={list} label="Annual" name="freq" />
           </Grid2>
         </Grid2>

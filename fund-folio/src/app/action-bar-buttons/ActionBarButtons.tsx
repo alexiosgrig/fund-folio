@@ -11,16 +11,13 @@ export const ActionBarButtons = () => {
   const location = useLocation();
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '100px',
-      }}
-    >
+    <Box>
       {location.pathname !== '/' && (
-        <>
+        <Box
+          display="flex"
+          gap={{ xs: 12, sm: 24, md: 48 }} // Adjust gap for different screen sizes
+          flexDirection={{ xs: 'row', sm: 'row' }} // Stack buttons vertically on small screens
+        >
           <Button
             variant="contained"
             color="primary"
@@ -39,7 +36,7 @@ export const ActionBarButtons = () => {
           >
             {t('refresh')}
           </Button>
-        </>
+        </Box>
       )}
     </Box>
   );

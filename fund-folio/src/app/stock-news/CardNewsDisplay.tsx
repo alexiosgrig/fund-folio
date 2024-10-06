@@ -15,7 +15,7 @@ export const CardNewsDisplay = () => {
       ) : (
         <Grid2 container spacing={8}>
           {newsData?.map((item, index) => (
-            <Grid2 size={3} key={index}>
+            <Grid2 size={{ xs: 12, sm: 6, md: 3 }} key={index}>
               <CardNews news={item} />
             </Grid2>
           ))}

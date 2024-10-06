@@ -26,7 +26,7 @@ export const StockNewsFilters = () => {
     <Card>
       <CardContent>
         <Grid2 container spacing={12}>
-          <Grid2 size={6}>
+          <Grid2 size={{ sm: 6, xs: 12, md: 6 }}>
             <SelectField
               list={categoryList}
               label={t('category')}
