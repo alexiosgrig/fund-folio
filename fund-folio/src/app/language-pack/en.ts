@@ -23,5 +23,6 @@ export const en = {
     incomeStatement: 'Income Statement',
     balanceSheet: 'Balance Sheet',
     metrics: 'Metrics',
+    category: 'Category'
   },
 };
