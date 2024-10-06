@@ -49,7 +49,7 @@ const Header = () => {
   const matchingEvent = marketHolidayData?.data?.find(
     (event) => event.atDate === currentDate
   );
-  console.log(marketHolidayData);
+  
   return (
     <AppBar>
       <Toolbar>

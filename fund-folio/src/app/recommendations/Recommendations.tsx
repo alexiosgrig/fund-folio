@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Card, CardContent, CardHeader, Grid2 } from '@mui/material';
+import {Grid2 } from '@mui/material';
 import { ChartsShared } from '../shared-elements/charts/ChartsShared';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -13,6 +13,7 @@ import {
 } from '../slices/recommendationsSlice';
 import { handleRecommendationsData } from './recommendationsUtils';
 import { RecommendationsFilter } from './RecommendationsFilter';
+import { CardContainerShared } from '../shared-elements/CardContainerShared';
 
 export const Recommendations = () => {
   const dispatch = useAppDispatch();
@@ -24,10 +25,10 @@ export const Recommendations = () => {
   const { t } = useTranslation();
   const validationSchema = Yup.object().shape({
     stock: Yup.string()
-      .max(4, t('stockSymbolValidation')) 
+      .max(4, t('stockSymbolValidation'))
       .required('Stock is required'),
   });
-  
+
   const methods = useForm({
     resolver: yupResolver(validationSchema),
   });
@@ -40,22 +41,21 @@ export const Recommendations = () => {
 
   return (
     <FormProvider {...methods}>
-      <Card sx={{ padding: '50px' }}>
-        <CardHeader
-          title={t('analystsRecommendations')}
-          subheader={t('providedByFinnhub')}
-        />
-        <CardContent>
-          <Grid2 container spacing={12}>
-            <Grid2 size={12}>
-              <RecommendationsFilter />
-            </Grid2>
-            <Grid2 size={12}>
-              <ChartsShared series={series} loading={loading} />
-            </Grid2>
+      <CardContainerShared
+        title={t('analystsRecommendations')}
+        subheader={t('providedByFinnhub')}
+      >
+        <Grid2 container spacing={12}>
+          <Grid2 size={{ xs: 12, sm: 12, md: 12 }}>
+            <RecommendationsFilter />
           </Grid2>
-        </CardContent>
-      </Card>
+          <Grid2 size={{ xs: 12, sm: 12, md: 12 }}>
+            <CardContainerShared>
+              <ChartsShared series={series} loading={loading} />
+            </CardContainerShared>
+          </Grid2>
+        </Grid2>
+      </CardContainerShared>
     </FormProvider>
   );
 };

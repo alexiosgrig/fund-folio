@@ -24,11 +24,10 @@ export const RecommendationsFilter = () => {
   };
 
   return (
-    <Grid2 size={12}>
       <Card>
         <CardContent>
           <Grid2 container spacing={12}>
-            <Grid2 size={6}>
+            <Grid2 size={{ xs: 8, sm: 6, md: 6 }}>
               <InputField
                 label={t('enterStock')}
                 id={'stock'}
@@ -38,8 +37,7 @@ export const RecommendationsFilter = () => {
                 errors={formState.errors?.stock?.message}
               />
             </Grid2>
-            <Grid2 size={6}>
-              <CardActions sx={{ justifyContent: 'flex-end', padding: '50px' }}>
+              <CardActions>
                 <Button
                   onClick={handleSubmit(getRecommendations)}
                   variant="contained"
@@ -48,10 +46,8 @@ export const RecommendationsFilter = () => {
                   {t('search')}
                 </Button>
               </CardActions>
-            </Grid2>
           </Grid2>
         </CardContent>
       </Card>
-    </Grid2>
   );
 };

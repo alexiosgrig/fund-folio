@@ -1,10 +1,7 @@
 import React from 'react';
 import {
   Button,
-  Card,
   CardActions,
-  CardContent,
-  CardHeader,
   Grid2,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +11,7 @@ import AnalyticsIcon from '@mui/icons-material/Analytics';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
+import { CardContainerShared } from '../shared-elements/CardContainerShared';
 
 export const Dashboard = () => {
   const navigate = useNavigate();
@@ -45,23 +43,20 @@ export const Dashboard = () => {
   };
 
   return (
-    <Grid2 container rowSpacing={8} spacing={8}>
+    <Grid2 container spacing={8}>
       {dashboardCardList.map((list, index) => (
-        <Grid2 size={4} key={index}>
-          <Card variant="elevation" sx={{ padding: '50px' }}>
-            <CardContent>
-              <CardHeader title={list?.title} />
-              <CardActions>
-                <Button
-                  variant="text"
-                  onClick={() => navigate(list?.router)}
-                  startIcon={startIcon(list?.router)}
-                >
-                  {`Go to ${list?.title}`}
-                </Button>
-              </CardActions>
-            </CardContent>
-          </Card>
+        <Grid2 size={{ xs: 12, sm: 6, md: 3 }} key={index}>
+          <CardContainerShared title={list?.title} subheader={list?.title}>
+            <CardActions>
+              <Button
+                variant="text"
+                onClick={() => navigate(list?.router)}
+                startIcon={startIcon(list?.router)}
+              >
+                {`Go to ${list?.title}`}
+              </Button>
+            </CardActions>
+          </CardContainerShared>
         </Grid2>
       ))}
     </Grid2>

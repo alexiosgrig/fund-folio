@@ -22,7 +22,7 @@ export const ChartsShared: React.FC<ChartsProps> = ({ series, loading }) => {
         <BarChart
           xAxis={[{ scaleType: 'band', data: ['Recommendations'] }]}
           series={series ? series : []}
-          width={600}
+          width={500}
           height={500}
           barLabel="value"
         />
