@@ -23,6 +23,8 @@ export const sp = {
     incomeStatement: 'Income Statement',
     balanceSheet: 'Balance',
     metrics: 'Metrics',
-    category: 'Category'
+    category: 'Category',
+    recommendations: 'Recommendations',
+    welcome: 'Welcome'
   },
 };

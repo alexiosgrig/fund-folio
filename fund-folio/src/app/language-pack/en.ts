@@ -23,6 +23,8 @@ export const en = {
     incomeStatement: 'Income Statement',
     balanceSheet: 'Balance Sheet',
     metrics: 'Metrics',
-    category: 'Category'
+    category: 'Category',
+    recommendations: 'Recommendations',
+    welcome: 'Welcome'
   },
 };

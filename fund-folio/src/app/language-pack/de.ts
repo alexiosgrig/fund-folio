@@ -20,5 +20,8 @@ export const de = {
     incomeStatement: 'Income Statement',
     balanceSheet: 'Balance',
     metrics: 'Metrics',
+    category: 'Category',
+    recommendations: 'Recommendations',
+    welcome: 'Welcome'
   },
 };
