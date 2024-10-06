@@ -8,6 +8,7 @@ import { INewsPayload } from '../services/INewsData';
 import { StockNewsFilters } from './StockNewsFilters';
 import { CardNewsDisplay } from './CardNewsDisplay';
 import { CardContainerShared } from '../shared-elements/CardContainerShared';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export const StockNews = () => {
   const { t } = useTranslation();
@@ -20,6 +21,8 @@ export const StockNews = () => {
       dispatch(clearNewsData());
     };
   }, [dispatch]);
+
+  useDocumentTitle(t('stockNews'))
 
   return (
     <FormProvider {...methods}>

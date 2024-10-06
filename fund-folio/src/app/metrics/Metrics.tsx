@@ -7,6 +7,7 @@ import {
 } from '../slices/metricsSlice';
 import { CardContainerShared } from '../shared-elements/CardContainerShared';
 import { useTranslation } from 'react-i18next';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export const Metrics = () => {
   const { t } = useTranslation();
@@ -15,6 +16,8 @@ export const Metrics = () => {
   const searchMetrics = async (payload: IMetricsPayload) => {
     dispatch(fetchMetrics(payload));
   };
+
+  useDocumentTitle(t('metrics'))
 
   return (
     <CardContainerShared title={t('metrics')} subheader={t('metrics')}>

@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  Button,
-  CardActions,
-  Grid2,
-} from '@mui/material';
+import { Button, CardActions, Grid2 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import RecommendIcon from '@mui/icons-material/Recommend';
@@ -12,6 +8,7 @@ import NewspaperIcon from '@mui/icons-material/Newspaper';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import { CardContainerShared } from '../shared-elements/CardContainerShared';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export const Dashboard = () => {
   const navigate = useNavigate();
@@ -41,6 +38,8 @@ export const Dashboard = () => {
         return <> </>;
     }
   };
+
+  useDocumentTitle(t('dashboard'));
 
   return (
     <Grid2 container spacing={8}>

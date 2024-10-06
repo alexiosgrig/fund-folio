@@ -12,6 +12,7 @@ import { StockAnalysisDisplay } from './StockAnalysisDisplay';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { CardContainerShared } from '../shared-elements/CardContainerShared';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export const StockAnalysis = () => {
   const { t } = useTranslation();
@@ -25,6 +26,9 @@ export const StockAnalysis = () => {
   const methods = useForm({
     resolver: yupResolver(validationSchema),
   });
+
+  useDocumentTitle(t('stockAnalysis'))
+
   return (
     <FormProvider {...methods}>
       <CardContainerShared

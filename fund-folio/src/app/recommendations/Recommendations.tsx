@@ -14,6 +14,7 @@ import {
 import { handleRecommendationsData } from './recommendationsUtils';
 import { RecommendationsFilter } from './RecommendationsFilter';
 import { CardContainerShared } from '../shared-elements/CardContainerShared';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export const Recommendations = () => {
   const dispatch = useAppDispatch();
@@ -39,6 +40,8 @@ export const Recommendations = () => {
     };
   }, [dispatch]);
 
+  useDocumentTitle(t('recommendations'))
+  
   return (
     <FormProvider {...methods}>
       <CardContainerShared
