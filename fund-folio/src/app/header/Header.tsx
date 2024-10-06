@@ -54,7 +54,7 @@ const Header = () => {
     <AppBar>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          {t('news')}
+          {t('welcome')}
         </Typography>
         {matchingEvent && (
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
