@@ -28,7 +28,7 @@ export const StockNews = () => {
           <Grid2 size={12}>
             <StockNewsFilters />
           </Grid2>
-          <Grid2 size={12}>
+          <Grid2 size={12} container justifyContent={'center'}>
             <CardNewsDisplay />
           </Grid2>
         </Grid2>

@@ -33,15 +33,17 @@ export const StockNewsFilters = () => {
               name={'category'}
             />
           </Grid2>
-          <CardActions sx={{ justifyContent: 'flex-end', padding: '50px' }}>
-            <Button
-              onClick={handleSubmit(handleSearch)}
-              variant="contained"
-              color="primary"
-            >
-              {t('search')}
-            </Button>
-          </CardActions>
+          <Grid2 size={12}>
+            <CardActions>
+              <Button
+                onClick={handleSubmit(handleSearch)}
+                variant="contained"
+                color="primary"
+              >
+                {t('search')}
+              </Button>
+            </CardActions>
+          </Grid2>
         </Grid2>
       </CardContent>
     </Card>
