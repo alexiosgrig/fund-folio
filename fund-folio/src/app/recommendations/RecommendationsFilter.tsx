@@ -24,30 +24,32 @@ export const RecommendationsFilter = () => {
   };
 
   return (
-      <Card>
-        <CardContent>
-          <Grid2 container spacing={12}>
-            <Grid2 size={{ xs: 8, sm: 6, md: 6 }}>
-              <InputField
-                label={t('enterStock')}
-                id={'stock'}
-                name={'stock'}
-                variant="outlined"
-                color={'info'}
-                errors={formState.errors?.stock?.message}
-              />
-            </Grid2>
-              <CardActions>
-                <Button
-                  onClick={handleSubmit(getRecommendations)}
-                  variant="contained"
-                  color="primary"
-                >
-                  {t('search')}
-                </Button>
-              </CardActions>
+    <Card>
+      <CardContent>
+        <Grid2 container spacing={12}>
+          <Grid2 size={{ xs: 8, sm: 6, md: 6 }}>
+            <InputField
+              label={t('enterStock')}
+              id={'stock'}
+              name={'stock'}
+              variant="outlined"
+              color={'info'}
+              errors={formState.errors?.stock?.message}
+            />
           </Grid2>
-        </CardContent>
-      </Card>
+          <Grid2 size={12}>
+            <CardActions>
+              <Button
+                onClick={handleSubmit(getRecommendations)}
+                variant="contained"
+                color="primary"
+              >
+                {t('search')}
+              </Button>
+            </CardActions>
+          </Grid2>
+        </Grid2>
+      </CardContent>
+    </Card>
   );
 };

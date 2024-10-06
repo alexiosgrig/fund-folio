@@ -1,10 +1,7 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import {
-  CircularProgress,
-  Grid2,
-} from '@mui/material';
+import { CircularProgress, Grid2 } from '@mui/material';
 import { useAppSelector } from '../store/hooks';
 import { selectStockAnalysisLoading } from '../slices/stockAnalysisSlice';
 import { StockAnalysisFilter } from './StockAnalysisFilter';
@@ -24,10 +21,10 @@ export const StockAnalysis = () => {
   });
 
   const methods = useForm({
-    resolver: yupResolver(validationSchema),
+    // resolver: yupResolver(validationSchema),
   });
 
-  useDocumentTitle(t('stockAnalysis'))
+  useDocumentTitle(t('stockAnalysis'));
 
   return (
     <FormProvider {...methods}>
@@ -35,17 +32,11 @@ export const StockAnalysis = () => {
         title={t('stockAnalysis')}
         subheader={t('stockAnalysis')}
       >
-        <Grid2
-          spacing={12}
-          container
-          alignContent={'center'}
-          alignItems={'center'}
-          alignSelf={'center'}
-        >
+        <Grid2 container spacing={12}>
           <Grid2 size={12}>
             <StockAnalysisFilter />
           </Grid2>
-          <Grid2 size={12}>
+          <Grid2 size={12} container justifyContent={'center'}>
             {loading ? (
               <CircularProgress color="error" />
             ) : (

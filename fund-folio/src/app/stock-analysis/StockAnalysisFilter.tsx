@@ -10,7 +10,7 @@ import { fetchStockAnalysis } from '../slices/stockAnalysisSlice';
 
 export const StockAnalysisFilter = () => {
   const { t } = useTranslation();
-  const { handleSubmit } = useFormContext();
+  const { handleSubmit, formState } = useFormContext();
   const dispatch = useAppDispatch();
 
   const list = [
@@ -33,21 +33,24 @@ export const StockAnalysisFilter = () => {
               name={'symbol'}
               variant={'filled'}
               color="error"
+              errors={formState.errors?.stock?.message}
             />
           </Grid2>
           <Grid2 size={{ md: 6, xs: 12 }}>
             <SelectField list={list} label="Annual" name="freq" />
           </Grid2>
+          <Grid2 size={12}>
+            <CardActions>
+              <Button
+                variant={'contained'}
+                color={'primary'}
+                onClick={handleSubmit(searchStock)}
+              >
+                {t('search')}
+              </Button>
+            </CardActions>
+          </Grid2>
         </Grid2>
-        <CardActions sx={{ justifyContent: 'flex-end', padding: '50px' }}>
-          <Button
-            variant={'contained'}
-            color={'secondary'}
-            onClick={handleSubmit(searchStock)}
-          >
-            {t('search')}
-          </Button>
-        </CardActions>
       </CardContent>
     </Card>
   );

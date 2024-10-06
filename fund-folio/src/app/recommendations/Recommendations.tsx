@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {Grid2 } from '@mui/material';
+import { Grid2 } from '@mui/material';
 import { ChartsShared } from '../shared-elements/charts/ChartsShared';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -40,8 +40,8 @@ export const Recommendations = () => {
     };
   }, [dispatch]);
 
-  useDocumentTitle(t('recommendations'))
-  
+  useDocumentTitle(t('recommendations'));
+
   return (
     <FormProvider {...methods}>
       <CardContainerShared
@@ -49,10 +49,10 @@ export const Recommendations = () => {
         subheader={t('providedByFinnhub')}
       >
         <Grid2 container spacing={12}>
-          <Grid2 size={{ xs: 12, sm: 12, md: 12 }}>
+          <Grid2 size={12}>
             <RecommendationsFilter />
           </Grid2>
-          <Grid2 size={{ xs: 12, sm: 12, md: 12 }}>
+          <Grid2 size={12} container justifyContent={'center'}>
             <CardContainerShared>
               <ChartsShared series={series} loading={loading} />
             </CardContainerShared>
