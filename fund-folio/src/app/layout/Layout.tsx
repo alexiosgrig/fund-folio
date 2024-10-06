@@ -9,7 +9,7 @@ export const Layout = ({ children }) => {
     <>
       <Header />
       <ActionBarButtons />
-      <Container>{children}</Container>
+      <Container sx={{ padding: '100px' }}>{children}</Container>
 
       <Footer />
     </>
