@@ -5,10 +5,11 @@ import { SelectField } from '../shared-elements/select-field/SelectField';
 import { useTranslation } from 'react-i18next';
 import { useFormContext } from 'react-hook-form';
 import { FinancialDataAsReportedPayload } from '../services/IFinancialData';
-import { useAppDispatch } from '../store/hooks';
-import { fetchStockAnalysis } from '../slices/stockAnalysisSlice';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { fetchStockAnalysis, selectStockAnalysisLoading } from '../slices/stockAnalysisSlice';
 
 export const StockAnalysisFilter = () => {
+  const loading = useAppSelector(selectStockAnalysisLoading);
   const { t } = useTranslation();
   const { handleSubmit, formState } = useFormContext();
   const dispatch = useAppDispatch();
@@ -45,6 +46,7 @@ export const StockAnalysisFilter = () => {
                 variant={'contained'}
                 color={'primary'}
                 onClick={handleSubmit(searchStock)}
+                disabled={loading}
               >
                 {t('search')}
               </Button>

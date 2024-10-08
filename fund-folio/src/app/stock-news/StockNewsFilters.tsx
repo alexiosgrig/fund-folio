@@ -3,11 +3,12 @@ import { Button, Card, CardActions, CardContent, Grid2 } from '@mui/material';
 import { SelectField } from '../shared-elements/select-field/SelectField';
 import { useFormContext } from 'react-hook-form';
 import { INewsPayload } from '../services/INewsData';
-import { fetchNews } from '../slices/newsSlice';
-import { useAppDispatch } from '../store/hooks';
+import { fetchNews, selectNewsLoading } from '../slices/newsSlice';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { useTranslation } from 'react-i18next';
 
 export const StockNewsFilters = () => {
+  const loading = useAppSelector(selectNewsLoading);
   const { t } = useTranslation();
   const { handleSubmit } = useFormContext<INewsPayload>();
   const dispatch = useAppDispatch();
@@ -39,6 +40,7 @@ export const StockNewsFilters = () => {
                 onClick={handleSubmit(handleSearch)}
                 variant="contained"
                 color="primary"
+                disabled={loading} 
               >
                 {t('search')}
               </Button>

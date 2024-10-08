@@ -3,14 +3,15 @@ import { Button, Card, CardActions, CardContent, Grid2 } from '@mui/material';
 import { InputField } from '../shared-elements/input-field/InputField';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch } from '../store/hooks';
-import { fetchRecommendations } from '../slices/recommendationsSlice';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { fetchRecommendations, selectRecommendationsLoading } from '../slices/recommendationsSlice';
 
 export const RecommendationsFilter = () => {
   const dispatch = useAppDispatch();
 
   const { handleSubmit, formState } = useFormContext();
   const { t } = useTranslation();
+  const loading = useAppSelector(selectRecommendationsLoading);
 
   const getRecommendations = async (event) => {
     const symbol = event?.stock;
@@ -43,6 +44,7 @@ export const RecommendationsFilter = () => {
                 onClick={handleSubmit(getRecommendations)}
                 variant="contained"
                 color="primary"
+                disabled={loading}
               >
                 {t('search')}
               </Button>

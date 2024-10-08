@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Grid2 } from '@mui/material';
+import { CircularProgress, Grid2 } from '@mui/material';
 import { ChartsShared } from '../shared-elements/charts/ChartsShared';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,17 +11,26 @@ import {
   selectRecommendationsData,
   selectRecommendationsLoading,
 } from '../slices/recommendationsSlice';
-import { handleRecommendationsData } from './recommendationsUtils';
 import { RecommendationsFilter } from './RecommendationsFilter';
 import { CardContainerShared } from '../shared-elements/CardContainerShared';
 import useDocumentTitle from '../hooks/useDocumentTitle';
+import { handleDataMapping } from '../utils/dataMappingUtils';
 
 export const Recommendations = () => {
   const dispatch = useAppDispatch();
 
   const recommendationsData = useAppSelector(selectRecommendationsData);
   const loading = useAppSelector(selectRecommendationsLoading);
-  const series = handleRecommendationsData(recommendationsData);
+
+  const categories = [
+    { key: 'strongBuy', label: 'Strong Buy', stack: '1' },
+    { key: 'buy', label: 'Buy', stack: '2' },
+    { key: 'hold', label: 'Hold', stack: '3' },
+    { key: 'sell', label: 'Sell', stack: '4' },
+    { key: 'strongSell', label: 'Strong Sell', stack: '5' },
+  ];
+
+  const series = handleDataMapping(recommendationsData, categories);
 
   const { t } = useTranslation();
   const validationSchema = Yup.object().shape({
@@ -53,9 +62,13 @@ export const Recommendations = () => {
             <RecommendationsFilter />
           </Grid2>
           <Grid2 size={12} container justifyContent={'center'}>
-            <CardContainerShared>
-              <ChartsShared series={series} loading={loading} />
-            </CardContainerShared>
+            <>
+              {loading ? (
+                <CircularProgress color="error" />
+              ) : (
+                <ChartsShared series={series} data={[t('recommendations')]} />
+              )}
+            </>
           </Grid2>
         </Grid2>
       </CardContainerShared>
