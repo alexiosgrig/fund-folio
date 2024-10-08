@@ -11,6 +11,7 @@ import {
 import { INewsPayload, INewsResponse } from './INewsData';
 import { IMetricsPayload, IMetricsResponse } from './IMetricsData';
 import { IMarketHolidayPayload, IMarketHolidayResponse } from './IMarketHolidayData';
+import { IEpsPayload, IEpsResponse } from './IEps';
 
 const { token, apiUrl } = environment;
 
@@ -47,7 +48,7 @@ export const getRecommendationsData = async (
     });
     return response.data;
   } catch (err) {
-    console.error('Error fetching financial data:', err);
+    console.error('Error fetching recommendations data:', err);
     throw err;
   }
 };
@@ -64,7 +65,7 @@ export const getNewsData = async (
     });
     return response.data;
   } catch (err) {
-    console.error('Error fetching financial data:', err);
+    console.error('Error fetching news data:', err);
     throw err;
   }
 };
@@ -81,7 +82,7 @@ export const getMetricsData = async (
     });
     return response.data;
   } catch (err) {
-    console.error('Error fetching financial data:', err);
+    console.error('Error fetching metrics data:', err);
     throw err;
   }
 };
@@ -98,7 +99,24 @@ export const getMarketHolidayData = async (
     });
     return response.data;
   } catch (err) {
-    console.error('Error fetching financial data:', err);
+    console.error('Error fetching holiday data:', err);
+    throw err;
+  }
+};
+
+export const getEpsData = async (
+  payload: IEpsPayload
+): Promise<IEpsResponse> => {
+  try {
+    const response = await api.get('/v1/stock/earnings', {
+      params: {
+        symbol : payload.symbol,
+        token,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.error('Error fetching eps data:', err);
     throw err;
   }
 };

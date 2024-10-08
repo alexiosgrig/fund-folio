@@ -25,6 +25,8 @@ export const en = {
     metrics: 'Metrics',
     category: 'Category',
     recommendations: 'Recommendations',
-    welcome: 'Welcome'
+    welcome: 'Welcome',
+    eps: 'Earnings Per Share',
+    goTo: 'Go to'
   },
 };

@@ -4,6 +4,7 @@ import { watchStockAnalysis } from './stockAnalysisSaga';
 import { watchNews } from './newsSaga';
 import { watchRecommendations } from './recommendationsSaga';
 import { watchMarketHoliday } from './marketHolidaySaga';
+import { watchEps } from './epsSaga';
 
 export default function* rootSaga() {
   yield all([
@@ -12,5 +13,6 @@ export default function* rootSaga() {
     fork(watchNews),
     fork(watchRecommendations),
     fork(watchMarketHoliday),
+    fork(watchEps),
   ]);
 }

@@ -7,6 +7,7 @@ import { Recommendations } from '../recommendations/Recommendations';
 import App from '../app';
 import { StockNews } from '../stock-news/StockNews';
 import { Metrics } from '../metrics/Metrics';
+import { EarningsPerShare } from '../earning-per-share/EarningPerShare';
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: 'metrics',
         element: <Metrics />,
+      },
+      {
+        path: 'eps',
+        element: <EarningsPerShare />,
       },
     ],
   },
