@@ -20,6 +20,7 @@ export const Dashboard = () => {
     { title: t('forex'), router: 'forex' },
     { title: t('crypto'), router: 'crypto' },
     { title: t('metrics'), router: 'metrics' },
+    { title: t('eps'), router: 'eps' },
   ];
 
   const startIcon = (title: string) => {
@@ -52,7 +53,7 @@ export const Dashboard = () => {
                 onClick={() => navigate(list?.router)}
                 startIcon={startIcon(list?.router)}
               >
-                {`Go to ${list?.title}`}
+                {`${t('goTo')} ${list?.title}`}
               </Button>
             </CardActions>
           </CardContainerShared>
